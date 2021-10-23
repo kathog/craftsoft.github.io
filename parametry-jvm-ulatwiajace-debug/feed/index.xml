@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	
+	>
+<channel>
+	<title>
+	Komentarze do: parametry JVM ułatwiające debug	</title>
+	<atom:link href="/parametry-jvm-ulatwiajace-debug/feed/" rel="self" type="application/rss+xml" />
+	<link>/parametry-jvm-ulatwiajace-debug/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Thu, 07 Oct 2021 19:44:49 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+	<item>
+		<title>
+		Autor: penis natürlich vergrößern		</title>
+		<link>/parametry-jvm-ulatwiajace-debug/#comment-452</link>
+
+		<dc:creator><![CDATA[penis natürlich vergrößern]]></dc:creator>
+		<pubDate>Thu, 07 Oct 2021 19:44:49 +0000</pubDate>
+		<guid isPermaLink="false">/?p=332#comment-452</guid>
+
+					<description><![CDATA[I have read so many articles about the blogger lovers however this post is in fact a pleasant paragraph,
+keep it up.]]></description>
+			<content:encoded><![CDATA[<p>I have read so many articles about the blogger lovers however this post is in fact a pleasant paragraph,<br />
+keep it up.</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

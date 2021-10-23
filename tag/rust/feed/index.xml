@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>Rust &#8211; DevOps tech blog</title>
+	<atom:link href="/tag/rust/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Sun, 28 Mar 2021 09:50:42 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+
+<image>
+	<url>https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/cropped-afb710c2810f3739b75f8387d0a12ac9-9.jpg?fit=32%2C32&#038;ssl=1</url>
+	<title>Rust &#8211; DevOps tech blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">192367061</site>	<item>
+		<title>Integracja Rust, CMake oraz Conan</title>
+		<link>/integracja-rust-cmake-oraz-conan/</link>
+					<comments>/integracja-rust-cmake-oraz-conan/#comments</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sat, 27 Mar 2021 17:08:29 +0000</pubDate>
+				<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[CMake]]></category>
+		<category><![CDATA[Conan]]></category>
+		<category><![CDATA[Rust]]></category>
+		<guid isPermaLink="false">/?p=797</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/integracja-rust-cmake-oraz-conan/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">797</post-id>	</item>
+		<item>
+		<title>Optymalizacja Rust przy pomocy profilowania LLVM</title>
+		<link>/optymalizacja-rust-poprzez-profilowanie-llvm/</link>
+					<comments>/optymalizacja-rust-poprzez-profilowanie-llvm/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sat, 20 Mar 2021 08:30:27 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[llvm]]></category>
+		<category><![CDATA[Rust]]></category>
+		<guid isPermaLink="false">/?p=743</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/optymalizacja-rust-poprzez-profilowanie-llvm/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">743</post-id>	</item>
+		<item>
+		<title>benchmark allocatorów: mimalloc vs tcmalloc vs system</title>
+		<link>/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/</link>
+					<comments>/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sun, 21 Feb 2021 16:38:23 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[mimalloc]]></category>
+		<category><![CDATA[Rust]]></category>
+		<category><![CDATA[tcmalloc]]></category>
+		<guid isPermaLink="false">/?p=703</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">703</post-id>	</item>
+		<item>
+		<title>cargo &#8211; kilka przydatnych funkcji</title>
+		<link>/cargo-kilka-przydatnych-funkcji/</link>
+					<comments>/cargo-kilka-przydatnych-funkcji/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2020 17:40:39 +0000</pubDate>
+				<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[cargo]]></category>
+		<category><![CDATA[Rust]]></category>
+		<guid isPermaLink="false">/?p=562</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/cargo-kilka-przydatnych-funkcji/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">562</post-id>	</item>
+		<item>
+		<title>tcmalloc vs libc na przykładzie benchmarka Rust</title>
+		<link>/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/</link>
+					<comments>/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sat, 10 Oct 2020 19:48:33 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[benchmark]]></category>
+		<category><![CDATA[Rust]]></category>
+		<category><![CDATA[tcmalloc]]></category>
+		<guid isPermaLink="false">/?p=546</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">546</post-id>	</item>
+	</channel>
+</rss>

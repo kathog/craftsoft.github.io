@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>ubuntu &#8211; DevOps tech blog</title>
+	<atom:link href="/tag/ubuntu/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Sun, 21 Mar 2021 06:53:05 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+
+<image>
+	<url>https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/cropped-afb710c2810f3739b75f8387d0a12ac9-9.jpg?fit=32%2C32&#038;ssl=1</url>
+	<title>ubuntu &#8211; DevOps tech blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">192367061</site>	<item>
+		<title>ubuntu-touch &#8211; powiększenie /usr</title>
+		<link>/ubuntu-touch-powiekszenie-usr/</link>
+					<comments>/ubuntu-touch-powiekszenie-usr/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sun, 21 Mar 2021 06:30:19 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[telefon]]></category>
+		<category><![CDATA[ubuntu]]></category>
+		<category><![CDATA[ubuntu-touch]]></category>
+		<guid isPermaLink="false">/?p=736</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/ubuntu-touch-powiekszenie-usr/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">736</post-id>	</item>
+		<item>
+		<title>auto uzupelnienie komend bash&#8217;owych</title>
+		<link>/auto-uzupelnienie-komend-bashowych/</link>
+					<comments>/auto-uzupelnienie-komend-bashowych/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:20:13 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[bash]]></category>
+		<category><![CDATA[debian]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[ubuntu]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=51</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/auto-uzupelnienie-komend-bashowych/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">51</post-id>	</item>
+	</channel>
+</rss>

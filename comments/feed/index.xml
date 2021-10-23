@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	
+	>
+<channel>
+	<title>
+	Komentarze do DevOps tech blog	</title>
+	<atom:link href="/comments/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Fri, 22 Oct 2021 19:08:10 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+	<item>
+		<title>
+		Skomentuj Integracja Rust, CMake oraz Conan, którego autorem jest Williamhip		</title>
+		<link>/integracja-rust-cmake-oraz-conan/#comment-483</link>
+
+		<dc:creator><![CDATA[Williamhip]]></dc:creator>
+		<pubDate>Fri, 22 Oct 2021 19:08:10 +0000</pubDate>
+		<guid isPermaLink="false">/?p=797#comment-483</guid>
+
+					<description><![CDATA[Thanks for one&#039;s marvelous posting! I truly enjoyed reading it, you will be a great author. I will make sure to bookmark your blog and will come back at some point. I want to encourage you to continue your great writing, have a nice day!]]></description>
+			<content:encoded><![CDATA[<p>Thanks for one&#8217;s marvelous posting! I truly enjoyed reading it, you will be a great author. I will make sure to bookmark your blog and will come back at some point. I want to encourage you to continue your great writing, have a nice day!</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Skomentuj jni &#8211; wywołanie natywnej metody c/c++ w javie, którego autorem jest diatomit		</title>
+		<link>/jni-wywolanie-natywnej-metody-c-c-w-javie/#comment-455</link>
+
+		<dc:creator><![CDATA[diatomit]]></dc:creator>
+		<pubDate>Fri, 08 Oct 2021 03:02:16 +0000</pubDate>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=177#comment-455</guid>
+
+					<description><![CDATA[Excellent goods from you, man. I have understand your stuff previous to and you are just too 
+excellent. I actually like what you&#039;ve acquired here, certainly like what you are stating and the way 
+in which you say it. You make it entertaining 
+and you still take care of to keep it wise.
+I cant wait to read far more from you. This is actually a wonderful site.]]></description>
+			<content:encoded><![CDATA[<p>Excellent goods from you, man. I have understand your stuff previous to and you are just too<br />
+excellent. I actually like what you&#8217;ve acquired here, certainly like what you are stating and the way<br />
+in which you say it. You make it entertaining<br />
+and you still take care of to keep it wise.<br />
+I cant wait to read far more from you. This is actually a wonderful site.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Skomentuj parametry JVM ułatwiające debug, którego autorem jest penis natürlich vergrößern		</title>
+		<link>/parametry-jvm-ulatwiajace-debug/#comment-452</link>
+
+		<dc:creator><![CDATA[penis natürlich vergrößern]]></dc:creator>
+		<pubDate>Thu, 07 Oct 2021 19:44:49 +0000</pubDate>
+		<guid isPermaLink="false">/?p=332#comment-452</guid>
+
+					<description><![CDATA[I have read so many articles about the blogger lovers however this post is in fact a pleasant paragraph,
+keep it up.]]></description>
+			<content:encoded><![CDATA[<p>I have read so many articles about the blogger lovers however this post is in fact a pleasant paragraph,<br />
+keep it up.</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Skomentuj jni &#8211; wywołanie natywnej metody c/c++ w javie, którego autorem jest nerull		</title>
+		<link>/jni-wywolanie-natywnej-metody-c-c-w-javie/#comment-73</link>
+
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 27 Nov 2020 18:22:57 +0000</pubDate>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=177#comment-73</guid>
+
+					<description><![CDATA[W odpowiedzi do &lt;a href=&quot;/jni-wywolanie-natywnej-metody-c-c-w-javie/#comment-69&quot;&gt;www.xmc.pl&lt;/a&gt;.
+
+It should be better, you can check]]></description>
+			<content:encoded><![CDATA[<p>W odpowiedzi do <a href="/jni-wywolanie-natywnej-metody-c-c-w-javie/#comment-69">http://www.xmc.pl/</a>.</p>
+<p>It should be better, you can check</p>
+]]></content:encoded>
+		
+			</item>
+		<item>
+		<title>
+		Skomentuj jni &#8211; wywołanie natywnej metody c/c++ w javie, którego autorem jest www.xmc.pl		</title>
+		<link>/jni-wywolanie-natywnej-metody-c-c-w-javie/#comment-69</link>
+
+		<dc:creator><![CDATA[www.xmc.pl]]></dc:creator>
+		<pubDate>Fri, 27 Nov 2020 12:31:44 +0000</pubDate>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=177#comment-69</guid>
+
+					<description><![CDATA[Hey your rss feed doesn&#039;t seem to work. Can you please have a look at it and fix it. I like to read your posts as you put them up because I really enjoy your content!]]></description>
+			<content:encoded><![CDATA[<p>Hey your rss feed doesn&#8217;t seem to work. Can you please have a look at it and fix it. I like to read your posts as you put them up because I really enjoy your content!</p>
+]]></content:encoded>
+		
+			</item>
+	</channel>
+</rss>

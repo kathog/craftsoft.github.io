@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>proces &#8211; DevOps tech blog</title>
+	<atom:link href="/tag/proces/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Wed, 07 Oct 2020 04:47:08 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+
+<image>
+	<url>https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/cropped-afb710c2810f3739b75f8387d0a12ac9-9.jpg?fit=32%2C32&#038;ssl=1</url>
+	<title>proces &#8211; DevOps tech blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">192367061</site>	<item>
+		<title>liczba wątków dla procesu/procesów</title>
+		<link>/liczba-watkow-dla-procesu-procesow/</link>
+					<comments>/liczba-watkow-dla-procesu-procesow/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:51:25 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[proces]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=91</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/liczba-watkow-dla-procesu-procesow/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">91</post-id>	</item>
+		<item>
+		<title>pmap &#8211; przydatna komenda do zbierania informacji o procesie</title>
+		<link>/pmap-przydatna-komenda-do-zbierania-informacji-o-procesie/</link>
+					<comments>/pmap-przydatna-komenda-do-zbierania-informacji-o-procesie/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:44:52 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[pmap]]></category>
+		<category><![CDATA[proces]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=78</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/pmap-przydatna-komenda-do-zbierania-informacji-o-procesie/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">78</post-id>	</item>
+		<item>
+		<title>proste zarządzanie procesami w Linux</title>
+		<link>/proste-zarzadzanie-procesami-w-linux/</link>
+					<comments>/proste-zarzadzanie-procesami-w-linux/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:17:13 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[linux]]></category>
+		<category><![CDATA[proces]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=49</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/proste-zarzadzanie-procesami-w-linux/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">49</post-id>	</item>
+	</channel>
+</rss>

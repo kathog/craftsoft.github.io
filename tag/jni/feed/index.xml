@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>jni &#8211; DevOps tech blog</title>
+	<atom:link href="/tag/jni/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Mon, 26 Oct 2020 15:14:33 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+
+<image>
+	<url>https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/cropped-afb710c2810f3739b75f8387d0a12ac9-9.jpg?fit=32%2C32&#038;ssl=1</url>
+	<title>jni &#8211; DevOps tech blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">192367061</site>	<item>
+		<title>Alokatory pamięci w c++</title>
+		<link>/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/</link>
+					<comments>/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Sun, 29 Mar 2020 10:47:31 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[jni]]></category>
+		<category><![CDATA[jvm]]></category>
+		<category><![CDATA[pamięć]]></category>
+		<category><![CDATA[pmap]]></category>
+		<category><![CDATA[valgrind]]></category>
+		<guid isPermaLink="false">/?p=490</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">490</post-id>	</item>
+		<item>
+		<title>jni &#8211; wywołanie natywnej metody c/c++ w javie</title>
+		<link>/jni-wywolanie-natywnej-metody-c-c-w-javie/</link>
+					<comments>/jni-wywolanie-natywnej-metody-c-c-w-javie/#comments</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 21:05:00 +0000</pubDate>
+				<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jni]]></category>
+		<category><![CDATA[jvm]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=177</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/jni-wywolanie-natywnej-metody-c-c-w-javie/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">177</post-id>	</item>
+	</channel>
+</rss>

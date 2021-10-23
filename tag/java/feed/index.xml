@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+	xmlns:georss="http://www.georss.org/georss"
+	xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+	>
+
+<channel>
+	<title>java &#8211; DevOps tech blog</title>
+	<atom:link href="/tag/java/feed/" rel="self" type="application/rss+xml" />
+	<link>/</link>
+	<description>Moje zapiski, pomysły, przemyślenia</description>
+	<lastBuildDate>Mon, 26 Oct 2020 15:14:33 +0000</lastBuildDate>
+	<language>pl-PL</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=5.8.1</generator>
+
+<image>
+	<url>https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/cropped-afb710c2810f3739b75f8387d0a12ac9-9.jpg?fit=32%2C32&#038;ssl=1</url>
+	<title>java &#8211; DevOps tech blog</title>
+	<link>/</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">192367061</site>	<item>
+		<title>parametry JVM ułatwiające debug</title>
+		<link>/parametry-jvm-ulatwiajace-debug/</link>
+					<comments>/parametry-jvm-ulatwiajace-debug/#comments</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Thu, 14 Nov 2019 13:55:11 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[debug]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jvm]]></category>
+		<guid isPermaLink="false">/?p=332</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/parametry-jvm-ulatwiajace-debug/feed/</wfw:commentRss>
+			<slash:comments>1</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">332</post-id>	</item>
+		<item>
+		<title>jni &#8211; wywołanie natywnej metody c/c++ w javie</title>
+		<link>/jni-wywolanie-natywnej-metody-c-c-w-javie/</link>
+					<comments>/jni-wywolanie-natywnej-metody-c-c-w-javie/#comments</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 21:05:00 +0000</pubDate>
+				<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[c++]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jni]]></category>
+		<category><![CDATA[jvm]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=177</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/jni-wywolanie-natywnej-metody-c-c-w-javie/feed/</wfw:commentRss>
+			<slash:comments>3</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">177</post-id>	</item>
+		<item>
+		<title>JOL &#8211; analiza obiektów JVM</title>
+		<link>/jol-analiza-obiektow-jvm/</link>
+					<comments>/jol-analiza-obiektow-jvm/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 20:02:23 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jol]]></category>
+		<category><![CDATA[jvm]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=110</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/jol-analiza-obiektow-jvm/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">110</post-id>	</item>
+		<item>
+		<title>JMH benchmark</title>
+		<link>/jmh-benchmark/</link>
+					<comments>/jmh-benchmark/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:59:28 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[benchmark]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jmh]]></category>
+		<category><![CDATA[jvm]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=107</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/jmh-benchmark/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">107</post-id>	</item>
+		<item>
+		<title>serializatory w javie</title>
+		<link>/serializatory-w-javie/</link>
+					<comments>/serializatory-w-javie/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:57:10 +0000</pubDate>
+				<category><![CDATA[Programowanie]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jvm]]></category>
+		<category><![CDATA[serializacja]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=104</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/serializatory-w-javie/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">104</post-id>	</item>
+		<item>
+		<title>obsługa modułu JK za pomocą apache dla glassfish</title>
+		<link>/obsluga-modulu-jk-za-pomoca-apache-dla-glassfish/</link>
+					<comments>/obsluga-modulu-jk-za-pomoca-apache-dla-glassfish/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:49:40 +0000</pubDate>
+				<category><![CDATA[Administracja]]></category>
+		<category><![CDATA[apache]]></category>
+		<category><![CDATA[glassfish]]></category>
+		<category><![CDATA[java]]></category>
+		<category><![CDATA[jk]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=88</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/obsluga-modulu-jk-za-pomoca-apache-dla-glassfish/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">88</post-id>	</item>
+		<item>
+		<title>remote debug aplikacji (java)</title>
+		<link>/remote-debug-aplikacji-java/</link>
+					<comments>/remote-debug-aplikacji-java/#respond</comments>
+		
+		<dc:creator><![CDATA[nerull]]></dc:creator>
+		<pubDate>Fri, 08 Nov 2019 19:48:21 +0000</pubDate>
+				<category><![CDATA[Profilowanie]]></category>
+		<category><![CDATA[debug]]></category>
+		<category><![CDATA[java]]></category>
+		<guid isPermaLink="false">http://serwer1987143.home.pl/?p=86</guid>
+
+					<description><![CDATA[]]></description>
+		
+					<wfw:commentRss>/remote-debug-aplikacji-java/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">86</post-id>	</item>
+	</channel>
+</rss>

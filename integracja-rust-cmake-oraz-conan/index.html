@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="UTF-8">
 <link rel="profile" href="http://gmpg.org/xfn/11">
-<title>DevOps tech blog &#8211; Moje zapiski, pomysły, przemyślenia</title>
+<link rel="pingback" href="/xmlrpc.php">
+<title>Integracja Rust, CMake oraz Conan &#8211; DevOps tech blog</title>
 <meta name="robots" content="max-image-preview:large">
 <link rel="dns-prefetch" href="//fonts.googleapis.com">
 <link rel="dns-prefetch" href="//stackpath.bootstrapcdn.com">
@@ -16,6 +17,7 @@
 <link rel="dns-prefetch" href="//c0.wp.com">
 <link rel="alternate" type="application/rss+xml" title="DevOps tech blog &raquo; Kanał z wpisami" href="/feed/">
 <link rel="alternate" type="application/rss+xml" title="DevOps tech blog &raquo; Kanał z komentarzami" href="/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="DevOps tech blog &raquo; Integracja Rust, CMake oraz Conan Kanał z komentarzami" href="/integracja-rust-cmake-oraz-conan/feed/">
 		<script type="text/javascript">
 			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/13.1.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/craftsoft.eu\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.8.1"}};
 			!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode;p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0);e=i.toDataURL();return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([10084,65039,8205,55357,56613],[10084,65039,8203,55357,56613])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(n=t.source||{}).concatemoji?c(n.concatemoji):n.wpemoji&&n.twemoji&&(c(n.twemoji),c(n.wpemoji)))}(window,document,window._wpemojiSettings);
@@ -58,6 +60,7 @@ img.emoji {
                     .sxc-follow-buttons .sxc-follow-button {
                         margin: 0px !important;
                     }</style>
+<link rel="stylesheet" id="codemirror-css" href="/wp-content/plugins/wp-codemirror-block/vendor/codemirror/lib/codemirror.min.css?ver=5.40.5" type="text/css" media="all">
 <link rel="stylesheet" id="codemirror-blocks--css" href="/wp-content/plugins/wp-codemirror-block/assets/blocks/blocks.style.build.min.css?ver=1603638933" type="text/css" media="all">
 <link rel="stylesheet" id="style-hightlight-css" href="/wp-content/plugins/wp-github/css/prism.css?ver=5.8.1" type="text/css" media="all">
 <link rel="stylesheet" id="anima-themefonts-css" href="/wp-content/themes/anima/resources/fonts/fontfaces.css?ver=1.4.1" type="text/css" media="all">
@@ -72,6 +75,12 @@ img.emoji {
 <link rel="stylesheet" id="jetpack_css-css" href="https://c0.wp.com/p/jetpack/10.2/css/jetpack.css" type="text/css" media="all">
 <script type="text/javascript" src="https://c0.wp.com/c/5.8.1/wp-includes/js/jquery/jquery.min.js" id="jquery-core-js"></script>
 <script type="text/javascript" src="https://c0.wp.com/c/5.8.1/wp-includes/js/jquery/jquery-migrate.min.js" id="jquery-migrate-js"></script>
+<script type="text/javascript" id="jetpack_related-posts-js-extra">
+/* <![CDATA[ */
+var related_posts_js_options = {"post_heading":"h4"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://c0.wp.com/p/jetpack/10.2/_inc/build/related-posts/related-posts.min.js" id="jetpack_related-posts-js"></script>
 <script type="text/javascript" src="/wp-content/plugins/social-media-buttons-toolbar/inc/lib/bootstrap-tooltip/bootstrap-tooltip.js?ver=4.73" id="spacexchimp_p005-bootstrap-tooltip-js-js"></script>
 <!--[if lt IE 9]>
 <script type='text/javascript' src='https://craftsoft.eu/wp-content/themes/anima/resources/js/html5shiv.min.js?ver=1.4.1' id='anima-html5shiv-js'></script>
@@ -79,9 +88,14 @@ img.emoji {
 <script type="text/javascript" src="/wp-content/plugins/cryout-serious-slider/resources/jquery.mobile.custom.min.js?ver=1.2.2" id="cryout-serious-slider-jquerymobile-js"></script>
 <script type="text/javascript" src="/wp-content/plugins/cryout-serious-slider/resources/slider.js?ver=1.2.2" id="cryout-serious-slider-script-js"></script>
 <link rel="https://api.w.org/" href="/wp-json/">
+<link rel="alternate" type="application/json" href="/wp-json/wp/v2/posts/797">
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd">
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/wp-includes/wlwmanifest.xml"> 
 <meta name="generator" content="WordPress 5.8.1">
+<link rel="canonical" href="/integracja-rust-cmake-oraz-conan/">
+<link rel="shortlink" href="/?p=797">
+<link rel="alternate" type="application/json+oembed" href="/wp-json/oembed/1.0/embed?url=https%3A%2F%2F%2Fintegracja-rust-cmake-oraz-conan%2F">
+<link rel="alternate" type="text/xml+oembed" href="/wp-json/oembed/1.0/embed?url=https%3A%2F%2F%2Fintegracja-rust-cmake-oraz-conan%2F&#038;format=xml">
 <!-- Analytics by WP-Statistics v13.1.1 - https://wp-statistics.com/ -->
 <style type="text/css">img#wpstats{display:none}</style>
 		<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
@@ -238,7 +252,7 @@ kbd {
 }</style>
 		</head>
 
-<body class="home blog wp-embed-responsive anima-image-none anima-caption-one anima-totop-normal anima-stripped-table anima-fixed-menu anima-cropped-headerimage anima-responsive-featured anima-magazine-two anima-magazine-layout anima-comment-placeholder anima-header-titles anima-elementshadow anima-normalizedtags anima-article-animation-slide" itemscope itemtype="http://schema.org/WebPage">
+<body class="post-template-default single single-post postid-797 single-format-standard wp-embed-responsive anima-image-none anima-caption-one anima-totop-normal anima-stripped-table anima-fixed-menu anima-cropped-headerimage anima-responsive-featured anima-magazine-two anima-magazine-layout anima-comment-placeholder anima-header-titles anima-elementshadow anima-normalizedtags anima-article-animation-slide" itemscope itemtype="http://schema.org/WebPage">
 		<div id="site-wrapper">
 	<header id="masthead" class="cryout" itemscope itemtype="http://schema.org/WPHeader" role="banner">
 
@@ -248,7 +262,7 @@ kbd {
 				<nav id="mobile-menu">
 					<span id="nav-cancel"><i class="icon-cancel"></i></span>
 					<div><ul id="mobile-nav" class="">
-<li id="menu-item-507" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-507"><a href="/" aria-current="page"><span>Strona główna</span></a></li>
+<li id="menu-item-507" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-507"><a href="/"><span>Strona główna</span></a></li>
 <li id="menu-item-508" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-508"><a href="/o-mnie/"><span>O mnie</span></a></li>
 <li class="menu-main-search menu-search-animated">
 			<a role="link"><i class="icon-search"></i><span class="screen-reader-text">Szukaj</span></a>
@@ -266,7 +280,7 @@ kbd {
 
 				<div id="branding">
 					<div id="site-text">
-<h1 itemprop="headline" id="site-title"><span> <a href="/" title="Moje zapiski, pomysły, przemyślenia" rel="home">DevOps tech blog</a> </span></h1>
+<div itemprop="headline" id="site-title"><span> <a href="/" title="Moje zapiski, pomysły, przemyślenia" rel="home">DevOps tech blog</a> </span></div>
 <span id="site-description" itemprop="description">Moje zapiski, pomysły, przemyślenia</span>
 </div>				</div>
 <!-- #branding -->
@@ -280,7 +294,7 @@ kbd {
 		<a href="#main" title="Przejdź do treści"> Przejdź do treści </a>
 	</div>
 	<div><ul id="prime_nav" class="">
-<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-507"><a href="/" aria-current="page"><span>Strona główna</span></a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-507"><a href="/"><span>Strona główna</span></a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-508"><a href="/o-mnie/"><span>O mnie</span></a></li>
 <li class="menu-main-search menu-search-animated">
 			<a role="link"><i class="icon-search"></i><span class="screen-reader-text">Szukaj</span></a>
@@ -303,15 +317,26 @@ kbd {
 
 		<div id="header-image-main">
 			<div id="header-image-main-inside">
-							<div class="header-image" style="background-image: url(/wp-content/uploads/2021/03/cropped-Zrzut-ekranu-z-2021-03-27-20-04-26.png)"></div>
-			<img class="header-image" alt="DevOps tech blog" src="/wp-content/uploads/2021/03/cropped-Zrzut-ekranu-z-2021-03-27-20-04-26.png">
+							<div class="header-image" style="background-image: url(/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png)"></div>
+			<img class="header-image" alt="Integracja Rust, CMake oraz Conan" src="/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png">
 				    <div id="header-page-title">
         <div id="header-page-title-inside">
-            <h2 class="entry-title" itemprop="headline">DevOps tech blog</h2>
-<p class="byline">Moje zapiski, pomysły, przemyślenia</p>            <div class="entry-meta aftertitle-meta">
-                            </div>
+            <h1 class="entry-title" itemprop="headline">Integracja Rust, CMake oraz Conan</h1>            <div class="entry-meta aftertitle-meta">
+                <span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author"><img alt="" src="https://secure.gravatar.com/avatar/3548bdf5f670e7fafaa48f19cc9243ba?s=96&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/3548bdf5f670e7fafaa48f19cc9243ba?s=192&#038;d=mm&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96" loading="lazy"><em>Dodany przez</em><a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
+					<em itemprop="name">nerull</em>
+				</a> <em>dnia</em></span>
+		<span class="onDate date">
+				<i class="icon-date icon-metas" title="Data"></i>
+				<time class="published" datetime="2021-03-27T18:08:29+01:00" itemprop="datePublished">
+					27 marca 2021				</time>
+				<time class="updated" datetime="2021-03-28T11:50:42+02:00" itemprop="dateModified">28 marca 2021</time>
+		</span>
+		<span class="bl_categ">
+					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>            </div>
 <!-- .entry-meta -->
-                    </div>
+            <div id="breadcrumbs-container" class="cryout two-columns-right"><div id="breadcrumbs-container-inside"><div id="breadcrumbs"> <nav id="breadcrumbs-nav"><a href="/" title="Strona główna"><i class="icon-bread-home"></i><span class="screen-reader-text">Strona główna</span></a><i class="icon-bread-arrow"></i> <a href="/category/programowanie/">Programowanie</a> <i class="icon-bread-arrow"></i> <span class="current">Integracja Rust, CMake oraz Conan</span></nav>
+</div></div></div>
+<!-- breadcrumbs -->        </div>
     </div> 			</div>
 <!-- #header-image-main-inside -->
 		</div>
@@ -322,33 +347,42 @@ kbd {
 	
 	
 	<div id="content" class="cryout">
-		<div id="container" class="two-columns-right">
+			<nav id="nav-fixed">
+		<div class="nav-previous"><a href="/ubuntu-touch-powiekszenie-usr/" rel="prev"><i class="icon-continue-reading"></i><span>ubuntu-touch &#8211; powiększenie /usr</span></a></div>
+		<div class="nav-next"></div>
+	</nav>
+<div id="container" class="two-columns-right">
 	<main id="main" role="main" class="main">
 		
 		
-			<div id="content-masonry" class="content-masonry" itemscope itemtype="http://schema.org/Blog">
-				
-<article id="post-797" class="hentry post-797 post type-post status-publish format-standard has-post-thumbnail category-programowanie tag-c tag-cmake tag-conan tag-rust" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+			<article id="post-797" class="post-797 post type-post status-publish format-standard has-post-thumbnail hentry category-programowanie tag-c tag-cmake tag-conan tag-rust" itemscope itemtype="http://schema.org/Article" itemprop="mainEntity">
+				<div class="schema-image">
+							<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
 
 			<a class="post-featured-image" href="/integracja-rust-cmake-oraz-conan/" title="Integracja Rust, CMake oraz Conan" style="background-image: url(https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=430%2C350&#038;ssl=1)"> </a>
 			<a class="responsive-featured-image" href="/integracja-rust-cmake-oraz-conan/" title="Integracja Rust, CMake oraz Conan">
 				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=800%2C350&ssl=1 800w">
+	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 914px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=512%2C350&ssl=1 512w">
+	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 914px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=800%2C350&ssl=1 800w">
 	 									<img alt="Integracja Rust, CMake oraz Conan" itemprop="url" src="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2021/03/Zrzut-ekranu-z-2021-03-27-19-53-47.png?resize=430%2C350&ssl=1">
 				</picture>
 			</a>
 			<meta itemprop="width" content="430">
 			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
+			<div class="entry-meta featured-image-meta"></div>
+		</div>
+					</div>
+
+				<div class="article-inner">
+					<header>
+						<div class="entry-meta beforetitle-meta">
+													</div>
+<!-- .entry-meta -->
+						
+						<div class="entry-meta aftertitle-meta">
+							<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author"><img alt="" src="https://secure.gravatar.com/avatar/3548bdf5f670e7fafaa48f19cc9243ba?s=96&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/3548bdf5f670e7fafaa48f19cc9243ba?s=192&#038;d=mm&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96" loading="lazy"><em>Dodany przez</em><a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
 					<em itemprop="name">nerull</em>
-				</a>
-			</span>
+				</a> <em>dnia</em></span>
 		<span class="onDate date">
 				<i class="icon-date icon-metas" title="Data"></i>
 				<time class="published" datetime="2021-03-27T18:08:29+01:00" itemprop="datePublished">
@@ -356,649 +390,477 @@ kbd {
 				<time class="updated" datetime="2021-03-28T11:50:42+02:00" itemprop="dateModified">28 marca 2021</time>
 		</span>
 		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/integracja-rust-cmake-oraz-conan/" itemprop="mainEntityOfPage" rel="bookmark">Integracja Rust, CMake oraz Conan</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
+					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>						</div>
 <!-- .entry-meta -->
 
-		</header><!-- .entry-header -->
+					</header>
 
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/integracja-rust-cmake-oraz-conan/"><span>Read more</span> <em class="screen-reader-text">"Integracja Rust, CMake oraz Conan"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/integracja-rust-cmake-oraz-conan/#comments" itemprop="discussionURL">Jeden komentarz</a></span>				</footer>
+					
+					<div class="entry-content" itemprop="articleBody">
+						
+<p>Ostatnimi czasy zastanawiałem się nad tym, czy można w prosty sposób zintegrować projekt napisany w <code>C++</code> przy użyciu <code>CMake</code> i Conan z projektem napisanym w <code>Rust</code>. </p>
 
-			
-		
+
+
+<p>Okazało się, że już są takie biblioteki w <code>Rust</code> jak <code>Conan</code> i <code>CMake</code>, więc nie zostało mi nic innego jak zrobić przykładowy projekt i poskładać to w całość.</p>
+
+
+
+<p>Zaczynamy od projektu <code>C++</code> z <code>CMake</code>, mój projekt nazywa się <code>regexp_pcre</code> </p>
+
+
+
+<p>Plik <code>CMakeLists.txt</code> u mnie wygląda tak:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">cmake_minimum_required(VERSION 3.16)
+project(regexp_pcre)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_COMPILER clang++)
+
+include_directories(include)
+
+execute_process(COMMAND conan install ${CMAKE_CURRENT_SOURCE_DIR}/ -if=${CMAKE_BINARY_DIR}/ -pr=default)
+
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+include_directories(${CONAN_INCLUDE_DIRS})
+
+add_executable(regexp_pcre main.cpp )
+target_link_libraries(regexp_pcre -lstdc++ CONAN_PKG::jsoncpp CONAN_PKG::pcre)
+
+add_library(regexp_pcre_lib lib.cpp )
+target_link_libraries(regexp_pcre_lib -lstdc++ CONAN_PKG::jsoncpp CONAN_PKG::pcre CONAN_PKG::glog )
+
+install(TARGETS ${PROJECT_NAME}_lib DESTINATION .)
+file(GLOB HEADERS include/*.h)
+install(FILES ${HEADERS} DESTINATION ../../../../include/)</pre></div>
+
+
+
+<p>Dodałem sobie <code>execute_process(..)</code><strong> </strong>żeby przy każdym odświeżeniu <code>CMake</code> budowały mi się zależności z <code>Conan</code> jak również żeby nie było problemu gdy projekt będzie kompilowany przez <code>Cargo</code></p>
+
+
+
+<p>Nagłówki do projektu również umieszczam w dość egzotycznym miejscu, ale wynika to z tego, że chce mieć nagłówki w katalogu target w projekcie <code>Rust</code>, tak żebym miał do nich łatwy dostęp z poziomu <code>Rust</code></p>
+
+
+
+<p>Kolejnym niezbędnym elementem jest plik: <code>conanfile.txt </code>który u mnie wygląda tak:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">[requires]
+jsoncpp/1.9.4
+pcre/8.44
+glog/0.4.0
+
+[generators]
+cmake
+
+[options]
+pcre:with_jit=True</pre></div>
+
+
+
+<p>Pozostaje jeszcze stworzyć profil <code>Conan</code>, ja używam <code>default</code>, ale jak to woli, nie ma to znaczenia, natomiast trzeba pamiętać o zmianie w <code>CMakeLists.txt</code></p>
+
+
+
+<p>Moja definicja profilu wygląda tak:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">[settings]
+os=Linux
+os_build=Linux
+arch=x86_64
+arch_build=x86_64
+compiler=gcc
+compiler.version=10
+compiler.libcxx=libstdc++11
+build_type=Release
+[options]
+[build_requires]
+[env]</pre></div>
+
+
+
+<p>Plik nagłówka wygląda następująco:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">#ifndef REGEXP_PCRE_LIB_H
+#define REGEXP_PCRE_LIB_H
+
+
+void example(const std::string&amp; s);
+
+#endif //REGEXP_PCRE_LIB_H</pre></div>
+
+
+
+<p>Logiki funkcji nie będę omawiać ponieważ nie ma ona żadnego znaczenia w naszym przykładzie</p>
+
+
+
+<p>Więc mając już kompletną część związaną z <code>C++</code> przechodzimy do części związanej z <code>Rust</code></p>
+
+
+
+<p>Mój projekt nazywa się <code>cxx_test</code></p>
+
+
+
+<p>Zaczynamy od zależności jakie potrzebujemy, dopisujemy je do pliku <code>Cargo.toml</code></p>
+
+
+
+<p>Blok <code>build-dependencies</code> niezbędne do wykonania operacji kompilacji podczas budowania projektu</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">[build-dependencies]
+cxx-build = &quot;1.0&quot;
+cmake = &quot;0.1&quot;
+conan = &quot;0.1&quot;</pre></div>
+
+
+
+<p>Dodatkowo potrzebujemy jeden zależności w <code>dependencies</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">[dependencies]
+cxx = &quot;1.0&quot;</pre></div>
+
+
+
+<p>Mając już niezbędne zależności możemy przejść do utworzenia pliku: <code>build.rs </code>&#8211; pliku z definicją kompilacji zależności</p>
+
+
+
+<p>U mnie wygląda on tak:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">use cmake::Config;
+extern crate conan;
+use conan::*;
+use std::env;
+use std::path::Path;
+
+fn main() {
+
+    let conan_profile = &quot;default&quot;;
+    let command = InstallCommandBuilder::new()
+        .with_profile(&amp;conan_profile)
+        .build_policy(BuildPolicy::Missing)
+        .recipe_path(Path::new(&quot;../../cpp/regexp_pcre/conanfile.txt&quot;))
+        .build();
+
+    let build_info = command.generate().unwrap();
+    let json_include = build_info.get_dependency(&quot;jsoncpp&quot;).unwrap().get_include_dir().unwrap();
+    let glog_include = build_info.get_dependency(&quot;glog&quot;).unwrap().get_include_dir().unwrap();
+    let gflag_include = build_info.get_dependency(&quot;gflags&quot;).unwrap().get_include_dir().unwrap();
+
+    let dst = Config::new(&quot;../../cpp/regexp_pcre&quot;)
+        .cxxflag(&quot;-O3&quot;)
+        .build();
+
+    cxx_build::bridge(&quot;src/main.rs&quot;)
+        .file(&quot;src/blodstone.cpp&quot;)
+        .include(&quot;include&quot;)
+        .include(&quot;target/cxxbridge/rust&quot;)
+        .include(&quot;target/cxxbridge/cxx_test/src&quot;)
+        .include(json_include)
+        .include(glog_include)
+        .include(gflag_include)
+        .opt_level_str(&quot;fast&quot;)
+        .flag(&quot;-std=c++20&quot;)
+        .compiler(&quot;clang++&quot;)
+        .compile(&quot;cxx-test&quot;);
+
+    println!(&quot;cargo:rustc-link-search=native={}&quot;, dst.display());
+    println!(&quot;cargo:rustc-link-lib=regexp_pcre_lib&quot;);
+    build_info.cargo_emit();
+
+}</pre></div>
+
+
+
+<p>Szczegóły jak zbudować plik znajdują się na następujących stronach:</p>
+
+
+
+<ul>
+<li><a href="https://cxx.rs/" target="_blank" rel="noreferrer noopener">https://cxx.rs/</a></li>
+<li><a href="https://docs.rs/cmake/0.1.45/cmake/" target="_blank" rel="noreferrer noopener">https://docs.rs/cmake/0.1.45/cmake/</a></li>
+<li><a href="https://github.com/devolutions/conan-rs" target="_blank" rel="noreferrer noopener">https://github.com/devolutions/conan-rs</a></li>
+</ul>
+
+
+
+<p>Poniżej fragment budujący zależności pobrane z <code>conanfile.txt </code>projektu w <code>CMake</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">let conan_profile = &quot;default&quot;;
+    let command = InstallCommandBuilder::new()
+        .with_profile(&amp;conan_profile)
+        .build_policy(BuildPolicy::Missing)
+        .recipe_path(Path::new(&quot;../../cpp/regexp_pcre/conanfile.txt&quot;))
+        .build();
+let build_info = command.generate().unwrap();</pre></div>
+
+
+
+<p>Następnie wyciągamy sobie niezbędne lokalizacje katalogów <code>include</code>, po to żeby móc użyć w naszym projekcie zależności z <code>conan</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">let json_include = build_info.get_dependency(&quot;jsoncpp&quot;).unwrap().get_include_dir().unwrap();
+let glog_include = build_info.get_dependency(&quot;glog&quot;).unwrap().get_include_dir().unwrap();
+let gflag_include = build_info.get_dependency(&quot;gflags&quot;).unwrap().get_include_dir().unwrap();</pre></div>
+
+
+
+<p>Kompilacja projektu <code>CMake</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">let dst = Config::new(&quot;../../cpp/regexp_pcre&quot;)
+        .cxxflag(&quot;-O3&quot;)
+        .build();</pre></div>
+
+
+
+<p>Nasz projekt łączący świat <code>Rust</code> z <code>C++</code> przy użyciu biblioteki <code>cxx</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">cxx_build::bridge(&quot;src/main.rs&quot;)
+        .file(&quot;src/blodstone.cpp&quot;)
+        .include(&quot;include&quot;)
+        .include(&quot;target/cxxbridge/rust&quot;)
+        .include(&quot;target/cxxbridge/cxx_test/src&quot;)
+        .include(json_include)
+        .include(glog_include)
+        .include(gflag_include)
+        .opt_level_str(&quot;fast&quot;)
+        .flag(&quot;-std=c++20&quot;)
+        .compiler(&quot;clang++&quot;)
+        .compile(&quot;cxx-test&quot;);</pre></div>
+
+
+
+<p>Ostatni element to jest dodanie zależności do bibliotek z <code>conan</code> i projektu <code>CMake</code> do linkera</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">println!(&quot;cargo:rustc-link-search=native={}&quot;, dst.display());
+println!(&quot;cargo:rustc-link-lib=regexp_pcre_lib&quot;);
+build_info.cargo_emit();</pre></div>
+
+
+
+<p>Następnie tworzymy katalog <code>include</code> w katalogu głównym projektu, w nim tworzymy plik <code>blodstone.h</code>z definicjami funkcje które będziemy wykonywać w <code>C++</code></p>
+
+
+
+<p>Następnie w <code>src</code> tworzymy plik <code>blodstone.cpp </code>z kodem źródłowym, więcej informacji o przykładzie można znaleźć na stronie: <a rel="noreferrer noopener" href="https://cxx.rs/build/cargo.html" target="_blank">https://cxx.rs/build/cargo.html</a></p>
+
+
+
+<p>Potem przechodzimy do naszego głównego pliku projektu <code>Rust</code> <code>main.rs </code>lub <code>lib.rs</code></p>
+
+
+
+<p>Dodajemy w nim taki fragment kody:</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">#[cxx::bridge]
+mod bridge {
+
+unsafe extern &quot;C++&quot; {
+    include!(&quot;cxx_test/include/blodstone.h&quot;);
+    include!(&quot;cxx_test/target/include/lib.h&quot;);
+
+    pub(crate) fn format_stream();
+    pub(crate) fn example(s: &amp;CxxString);
+}
+}</pre></div>
+
+
+
+<p>Gdzie pierwsza funkcja to proxy do naszego wewnętrznego projektu a druga do projektu w <code>CMake</code></p>
+
+
+
+<p>Dzięki temu że nagłówki projektu <code>CMake</code> instalowaliśmy w takim dziwnym miejscu to teraz możemy się do nich dostać z takiej lokalizacji</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">include!(&quot;cxx_test/target/include/lib.h&quot;);</pre></div>
+
+
+
+<p>To co nam pozostaje to np, w funkcji <code>main()</code> wywołać wcześniej zdefiniowane funkcje w <code>C++</code></p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">fn main() {
+	
+    unsafe {
+      // funckaj z projektu wewnętrznego
+        format_stream();
+	 // funkcja z projektu CMake
+        let_cxx_string!(s = &quot;hello world&quot;);
+        example(&amp;s);
+    }
+
+}</pre></div>
+
+
+
+<p>Kompilujemy, ja kompiluje i uruchamiamy z opcją <code>-vv</code> żeby wiedzieć dokładnie co się dzieje</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">cargo run --release -vv</pre></div>
+
+
+
+<p>W wyniku dostajemy</p>
+
+
+
+<div class="wp-block-codemirror-blocks-code-block code-block"><pre class="CodeMirror" data-setting="{&quot;mode&quot;:&quot;rust&quot;,&quot;mime&quot;:&quot;text/x-rustsrc&quot;,&quot;theme&quot;:&quot;seti&quot;,&quot;lineNumbers&quot;:false,&quot;styleActiveLine&quot;:true,&quot;lineWrapping&quot;:false,&quot;readOnly&quot;:true,&quot;language&quot;:&quot;Rust&quot;,&quot;modeName&quot;:&quot;rust&quot;}">I0327 15:30:10.541882 90404 blodstone.cpp:73] json_file {&quot;action&quot;:&quot;run&quot;,&quot;data&quot;:{&quot;number&quot;:1}}
+I0327 15:30:11.542809 90404 lib.cpp:26] pcre found: 0
+I0327 15:30:11.542840 90404 lib.cpp:43] {
+	&quot;action&quot; : &quot;run&quot;,
+	&quot;data&quot; : 
+	{
+		&quot;number&quot; : 1
+	}
+}</pre></div>
+
+
+
+<p>Oczywiście jest to zupełnie przykładowy wynik działania, ale widać, że odpalił się kod z <code>blodstone.cpp</code> oraz z <code>lib.cpp</code></p>
+
+
+
+<p>Przykładowy kod można znaleźć tutaj:</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-osadz wp-block-embed-osadz"><div class="wp-block-embed__wrapper">
+https://github.com/kathog/cargo_cmake_conan
+</div></figure>
+
+
+
+<p></p>
+
+<div id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+</div>											</div>
+<!-- .entry-content -->
+
+					<footer class="entry-meta entry-utility">
+											</footer><!-- .entry-utility -->
+
+				</div>
+<!-- .article-inner -->
+				
 	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
          <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
            <meta itemprop="url" content="https://craftsoft.eu">
          </span>
          <meta itemprop="name" content="DevOps tech blog">
     </span>
-<link itemprop="mainEntityOfPage" href="/integracja-rust-cmake-oraz-conan/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-797 -->
+<link itemprop="mainEntityOfPage" href="/integracja-rust-cmake-oraz-conan/">			</article><!-- #post-## -->
 
+										
+										<section id="comments">
+	
+		<h3 id="comments-title">
+			<span>Jeden komentarz			</span>
+		</h3>
 
-<article id="post-736" class="hentry post-736 post type-post status-publish format-standard has-post-thumbnail category-administracja tag-linux tag-telefon tag-ubuntu tag-ubuntu-touch" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
+		<ol class="commentlist">
+						<li class="comment even thread-even depth-1" id="comment-483" itemscope itemtype="http://schema.org/Comment">
 
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
+				<article>
+					<div class="comment-body" itemprop="text">
+												<p>Thanks for one&#8217;s marvelous posting! I truly enjoyed reading it, you will be a great author. I will make sure to bookmark your blog and will come back at some point. I want to encourage you to continue your great writing, have a nice day!</p>
+					</div>
+					<header class="comment-header vcard">
 
-			<a class="post-featured-image" href="/ubuntu-touch-powiekszenie-usr/" title="ubuntu-touch - powiększenie /usr" style="background-image: url(https://i0.wp.com/craftsoft.eu/wp-content/uploads/2021/03/external-content.duckduckgo.com_.jpeg?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/ubuntu-touch-powiekszenie-usr/" title="ubuntu-touch - powiększenie /usr">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2021/03/external-content.duckduckgo.com_.jpeg?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2021/03/external-content.duckduckgo.com_.jpeg?resize=800%2C350&ssl=1 800w">
-	 									<img alt="ubuntu-touch &#8211; powiększenie /usr" itemprop="url" src="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2021/03/external-content.duckduckgo.com_.jpeg?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2021-03-21T07:30:19+01:00" itemprop="datePublished">
-					21 marca 2021				</time>
-				<time class="updated" datetime="2021-03-21T07:53:05+01:00" itemprop="dateModified">21 marca 2021</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/administracja/" rel="category tag">Administracja</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/ubuntu-touch-powiekszenie-usr/" itemprop="mainEntityOfPage" rel="bookmark">ubuntu-touch &#8211; powiększenie /usr</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
+						<div class="comment-author" itemscope itemtype="http://schema.org/Person" itemprop="creator">
+							<img alt="" src="https://secure.gravatar.com/avatar/3135ab653a41fb433405f7c27ec6692c?s=50&#038;d=mm&#038;r=g" srcset="https://secure.gravatar.com/avatar/3135ab653a41fb433405f7c27ec6692c?s=100&#038;d=mm&#038;r=g 2x" class="avatar avatar-50 photo" height="50" width="50" itemprop="image" itemscope itemtype="http://schema.org/ImageObject" loading="lazy">							<span class="author-name fn" itemprop="name"><a href="https://wheretobuy-uk.com/" rel="external nofollow ugc" class="url">Williamhip</a></span> 						</div> <!-- .comment-author -->
 
-		</header><!-- .entry-header -->
+						<div class="comment-meta">
+							<a href="/integracja-rust-cmake-oraz-conan/#comment-483">
+							<time datetime="2021-10-22T21:08:10+02:00" itemprop="datePublished">
+
+								<span class="comment-date">
+									22 października 2021 o 21 h 08 min								</span>
+								<span class="comment-timediff">
+									14 godzin temu								</span>
+
+							</time>
+							</a>
+													</div>
+<!-- .comment-meta -->
+
+						<div class="reply">
+							<a rel="nofollow" class="comment-reply-link" href="/integracja-rust-cmake-oraz-conan/?replytocom=483#respond" data-commentid="483" data-postid="797" data-belowelement="comment-483" data-respondelement="respond" data-replyto="Odpowiedz użytkownikowi Williamhip" aria-label="Odpowiedz użytkownikowi Williamhip"><i class="icon-reply"></i>Odpowiedz</a>						</div>
+<!-- .reply -->
+
+					</header><!-- .comment-header .vcard -->
+				</article>
+		</li>
+<!-- #comment-## -->
+		</ol>
+<!-- .commentlist -->
 
 		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/ubuntu-touch-powiekszenie-usr/"><span>Read more</span> <em class="screen-reader-text">"ubuntu-touch &#8211; powiększenie /usr"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/ubuntu-touch-powiekszenie-usr/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
+	
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Dodaj komentarz <small><a rel="nofollow" id="cancel-comment-reply-link" href="/integracja-rust-cmake-oraz-conan/#respond" style="display:none;">Anuluj pisanie odpowiedzi</a></small>
+</h3>
+<form action="/wp-comments-post.php" method="post" id="commentform" class="comment-form" novalidate>
+<p class="comment-notes"><span id="email-notes">Twój adres e-mail nie zostanie opublikowany.</span> Wymagane pola są oznaczone <span class="required">*</span></p>
+<p class="comment-form-comment"><label for="comment">Komentarz</label><textarea placeholder="Komentarz" id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>
+<p class="comment-form-author"><label for="author">Podpis<span class="required">*</span></label> <input id="author" placeholder="Podpis*" name="author" type="text" value="" size="30" maxlength="245" aria-required="true"></p>
+<p class="comment-form-email"><label for="email">Email<span class="required">*</span></label> <input id="email" placeholder="Email*" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" aria-required="true"></p>
+<p class="comment-form-url"><label for="url">Witryna internetowa</label><input id="url" placeholder="Witryna internetowa" name="url" type="url" value="" size="30" maxlength="200"></p>
+<p class="comment-form-cookies-consent"><label for="wp-comment-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes">Save my name, email, and site URL in my browser for next time I post a comment.</label></p>
+<p class="comment-form-captcha">
+		<label><b>Captcha </b></label>
+		<span class="required">*</span>
+		</p>
+<div style="clear:both;"></div>
+		<img alt="code" src="/wp-content/plugins/captcha-code-authentication/captcha_code_file.php?rand=989610510">
+		<div style="clear:both;"></div>
+		<label>Wpisz tekst wyświetlony powyżej:</label>
+		<input id="captcha_code" name="captcha_code" size="15" type="text">
+		<div style="clear:both;"></div>
+		<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Opublikuj komentarz"> <input type="hidden" name="comment_post_ID" value="797" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+<p style="display: none !important;"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js" name="ak_js" value="65"><script>document.getElementById( "ak_js" ).setAttribute( "value", ( new Date() ).getTime() );</script></p>
+</form>	</div>
+<!-- #respond -->
+	</section><!-- #comments -->
 
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/ubuntu-touch-powiekszenie-usr/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-736 -->
-
-
-<article id="post-743" class="hentry post-743 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-linux tag-llvm tag-rust" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/optymalizacja-rust-poprzez-profilowanie-llvm/" title="Optymalizacja Rust przy pomocy profilowania LLVM" style="background-image: url(https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/1200px-LLVM_Logo.svg_.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/optymalizacja-rust-poprzez-profilowanie-llvm/" title="Optymalizacja Rust przy pomocy profilowania LLVM">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/1200px-LLVM_Logo.svg_.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/1200px-LLVM_Logo.svg_.png?resize=800%2C350&ssl=1 800w">
-	 									<img alt="Optymalizacja Rust przy pomocy profilowania LLVM" itemprop="url" src="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/1200px-LLVM_Logo.svg_.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2021-03-20T09:30:27+01:00" itemprop="datePublished">
-					20 marca 2021				</time>
-				<time class="updated" datetime="2021-03-28T11:30:45+02:00" itemprop="dateModified">28 marca 2021</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/optymalizacja-rust-poprzez-profilowanie-llvm/" itemprop="mainEntityOfPage" rel="bookmark">Optymalizacja Rust przy pomocy profilowania LLVM</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/optymalizacja-rust-poprzez-profilowanie-llvm/"><span>Read more</span> <em class="screen-reader-text">"Optymalizacja Rust przy pomocy profilowania LLVM"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/optymalizacja-rust-poprzez-profilowanie-llvm/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/optymalizacja-rust-poprzez-profilowanie-llvm/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-743 -->
-
-
-<article id="post-703" class="hentry post-703 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-mimalloc tag-rust tag-tcmalloc" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/" title="benchmark allocatorów: mimalloc vs tcmalloc vs system" style="background-image: url(https://i1.wp.com/craftsoft.eu/wp-content/uploads/2021/02/Zrzut-ekranu-z-2021-02-21-17-02-54.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/" title="benchmark allocatorów: mimalloc vs tcmalloc vs system">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2021/02/Zrzut-ekranu-z-2021-02-21-17-02-54.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2021/02/Zrzut-ekranu-z-2021-02-21-17-02-54.png?resize=800%2C350&ssl=1 800w">
-	 									<img alt="benchmark allocatorów: mimalloc vs tcmalloc vs system" itemprop="url" src="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2021/02/Zrzut-ekranu-z-2021-02-21-17-02-54.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2021-02-21T17:38:23+01:00" itemprop="datePublished">
-					21 lutego 2021				</time>
-				<time class="updated" datetime="2021-03-21T08:08:39+01:00" itemprop="dateModified">21 marca 2021</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/" itemprop="mainEntityOfPage" rel="bookmark">benchmark allocatorów: mimalloc vs tcmalloc vs system</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/"><span>Read more</span> <em class="screen-reader-text">"benchmark allocatorów: mimalloc vs tcmalloc vs system"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/benchmark-allocatorow-mimalloc-vs-tcmalloc-vs-system/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-703 -->
-
-
-<article id="post-562" class="hentry post-562 post type-post status-publish format-standard has-post-thumbnail category-programowanie tag-cargo tag-rust" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/cargo-kilka-przydatnych-funkcji/" title="cargo - kilka przydatnych funkcji" style="background-image: url(https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/scree.png?resize=430%2C348&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/cargo-kilka-przydatnych-funkcji/" title="cargo - kilka przydatnych funkcji">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/scree.png?resize=512%2C348&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/scree.png?resize=577%2C348&ssl=1 800w">
-	 									<img alt="cargo &#8211; kilka przydatnych funkcji" itemprop="url" src="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/scree.png?resize=430%2C348&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="348">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2020-10-22T19:40:39+02:00" itemprop="datePublished">
-					22 października 2020				</time>
-				<time class="updated" datetime="2021-03-21T08:12:38+01:00" itemprop="dateModified">21 marca 2021</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/cargo-kilka-przydatnych-funkcji/" itemprop="mainEntityOfPage" rel="bookmark">cargo &#8211; kilka przydatnych funkcji</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/cargo-kilka-przydatnych-funkcji/"><span>Read more</span> <em class="screen-reader-text">"cargo &#8211; kilka przydatnych funkcji"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/cargo-kilka-przydatnych-funkcji/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/cargo-kilka-przydatnych-funkcji/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-562 -->
-
-
-<article id="post-546" class="hentry post-546 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-benchmark tag-rust tag-tcmalloc" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/" title="tcmalloc vs libc na przykładzie benchmarka Rust" style="background-image: url(https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/Zrzut-ekranu-10.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/" title="tcmalloc vs libc na przykładzie benchmarka Rust">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/Zrzut-ekranu-10.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/Zrzut-ekranu-10.png?resize=773%2C350&ssl=1 800w">
-	 									<img alt="tcmalloc vs libc na przykładzie benchmarka Rust" itemprop="url" src="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2020/10/Zrzut-ekranu-10.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2020-10-10T21:48:33+02:00" itemprop="datePublished">
-					10 października 2020				</time>
-				<time class="updated" datetime="2020-10-25T17:36:56+01:00" itemprop="dateModified">25 października 2020</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/" itemprop="mainEntityOfPage" rel="bookmark">tcmalloc vs libc na przykładzie benchmarka Rust</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/"><span>Read more</span> <em class="screen-reader-text">"tcmalloc vs libc na przykładzie benchmarka Rust"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/tcmalloc-vs-glib-na-przykladzie-benchmarka-rust/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-546 -->
-
-
-<article id="post-490" class="hentry post-490 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-c tag-jni tag-jvm tag-pamiec tag-pmap tag-valgrind" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/" title="Alokatory pamięci w c++" style="background-image: url(https://i1.wp.com/craftsoft.eu/wp-content/uploads/2020/03/tcmalloc_v.png?resize=430%2C278&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/" title="Alokatory pamięci w c++">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2020/03/tcmalloc_v.png?resize=512%2C278&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2020/03/tcmalloc_v.png?resize=746%2C278&ssl=1 800w">
-	 									<img alt="Alokatory pamięci w c++" itemprop="url" src="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2020/03/tcmalloc_v.png?resize=430%2C278&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="278">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2020-03-29T12:47:31+02:00" itemprop="datePublished">
-					29 marca 2020				</time>
-				<time class="updated" datetime="2020-10-25T17:38:56+01:00" itemprop="dateModified">25 października 2020</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/" itemprop="mainEntityOfPage" rel="bookmark">Alokatory pamięci w c++</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/"><span>Read more</span> <em class="screen-reader-text">"Alokatory pamięci w c++"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/problem-z-alkowaniem-pamieci-w-c-alokatory-pamieci/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-490 -->
-
-
-<article id="post-332" class="hentry post-332 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-debug tag-java tag-jvm" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/parametry-jvm-ulatwiajace-debug/" title="parametry JVM ułatwiające debug" style="background-image: url(https://i0.wp.com/craftsoft.eu/wp-content/uploads/2019/11/Zrzut-ekranu-9.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/parametry-jvm-ulatwiajace-debug/" title="parametry JVM ułatwiające debug">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2019/11/Zrzut-ekranu-9.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2019/11/Zrzut-ekranu-9.png?resize=800%2C350&ssl=1 800w">
-	 									<img alt="parametry JVM ułatwiające debug" itemprop="url" src="https://i0.wp.com/craftsoft.eu/wp-content/uploads/2019/11/Zrzut-ekranu-9.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2019-11-14T14:55:11+01:00" itemprop="datePublished">
-					14 listopada 2019				</time>
-				<time class="updated" datetime="2020-10-26T15:54:44+01:00" itemprop="dateModified">26 października 2020</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/parametry-jvm-ulatwiajace-debug/" itemprop="mainEntityOfPage" rel="bookmark">parametry JVM ułatwiające debug</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/parametry-jvm-ulatwiajace-debug/"><span>Read more</span> <em class="screen-reader-text">"parametry JVM ułatwiające debug"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/parametry-jvm-ulatwiajace-debug/#comments" itemprop="discussionURL">Jeden komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/parametry-jvm-ulatwiajace-debug/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-332 -->
-
-
-<article id="post-177" class="hentry post-177 post type-post status-publish format-standard has-post-thumbnail category-programowanie tag-c tag-java tag-jni tag-jvm" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/jni-wywolanie-natywnej-metody-c-c-w-javie/" title="jni - wywołanie natywnej metody c/c++ w javie" style="background-image: url(https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/jni.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/jni-wywolanie-natywnej-metody-c-c-w-javie/" title="jni - wywołanie natywnej metody c/c++ w javie">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/jni.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/jni.png?resize=800%2C350&ssl=1 800w">
-	 									<img alt="jni &#8211; wywołanie natywnej metody c/c++ w javie" itemprop="url" src="https://i1.wp.com/craftsoft.eu/wp-content/uploads/2019/11/jni.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2019-11-08T22:05:00+01:00" itemprop="datePublished">
-					8 listopada 2019				</time>
-				<time class="updated" datetime="2020-10-26T16:14:33+01:00" itemprop="dateModified">26 października 2020</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/jni-wywolanie-natywnej-metody-c-c-w-javie/" itemprop="mainEntityOfPage" rel="bookmark">jni &#8211; wywołanie natywnej metody c/c++ w javie</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/jni-wywolanie-natywnej-metody-c-c-w-javie/"><span>Read more</span> <em class="screen-reader-text">"jni &#8211; wywołanie natywnej metody c/c++ w javie"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/jni-wywolanie-natywnej-metody-c-c-w-javie/#comments" itemprop="discussionURL">3 komentarze</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/jni-wywolanie-natywnej-metody-c-c-w-javie/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-177 -->
-
-
-<article id="post-173" class="hentry post-173 post type-post status-publish format-standard has-post-thumbnail category-profilowanie category-programowanie tag-benchmark tag-c tag-valgrind" itemscope itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
-
-			<div class="post-thumbnail-container" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
-
-			<a class="post-featured-image" href="/profilowanie-wydajnosci-aplikacji-c/" title="profilowanie wydajności aplikacji c++" style="background-image: url(https://i2.wp.com/craftsoft.eu/wp-content/uploads/2019/11/val01.png?resize=430%2C350&#038;ssl=1)"> </a>
-			<a class="responsive-featured-image" href="/profilowanie-wydajnosci-aplikacji-c/" title="profilowanie wydajności aplikacji c++">
-				<picture>
-	 				<source media="(max-width: 1152px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2019/11/val01.png?resize=512%2C350&ssl=1 512w">
-	 				<source media="(max-width: 800px)" sizes="(max-width: 800px) 100vw,(max-width: 1152px) 50vw, 650px" srcset="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2019/11/val01.png?resize=800%2C350&ssl=1 800w">
-	 									<img alt="profilowanie wydajności aplikacji c++" itemprop="url" src="https://i2.wp.com/craftsoft.eu/wp-content/uploads/2019/11/val01.png?resize=430%2C350&ssl=1">
-				</picture>
-			</a>
-			<meta itemprop="width" content="430">
-			<meta itemprop="height" content="350">
-			<div class="entry-meta featured-image-meta">
-<span class="author vcard" itemscope itemtype="http://schema.org/Person" itemprop="author">
-				<i class="icon-author icon-metas" title="Autor"></i>
-				<a class="url fn n" rel="author" href="/author/nerull/" title="Zobacz wszystkie wpisy, których autorem jest nerull" itemprop="url">
-					<em itemprop="name">nerull</em>
-				</a>
-			</span>
-		<span class="onDate date">
-				<i class="icon-date icon-metas" title="Data"></i>
-				<time class="published" datetime="2019-11-08T22:03:41+01:00" itemprop="datePublished">
-					8 listopada 2019				</time>
-				<time class="updated" datetime="2020-10-26T16:17:55+01:00" itemprop="dateModified">26 października 2020</time>
-		</span>
-		<span class="bl_categ">
-					<i class="icon-category icon-metas" title="Kategorie"></i> <a href="/category/profilowanie/" rel="category tag">Profilowanie</a> <span class="sep">/</span> <a href="/category/programowanie/" rel="category tag">Programowanie</a></span>
-</div>
-		</div>
-		<div class="article-inner">
-		<header class="entry-header">
-			<div class="entry-meta beforetitle-meta">
-							</div>
-<!-- .entry-meta -->
-			<h2 class="entry-title" itemprop="headline"><a href="/profilowanie-wydajnosci-aplikacji-c/" itemprop="mainEntityOfPage" rel="bookmark">profilowanie wydajności aplikacji c++</a></h2>
-			<div class="entry-meta aftertitle-meta">
-							</div>
-<!-- .entry-meta -->
-
-		</header><!-- .entry-header -->
-
-		
-				<div class="entry-summary" itemprop="description">
-									</div>
-<!-- .entry-summary -->
-				<div class="entry-meta entry-utility">
-														</div>
-<!-- .entry-utility -->
-				<footer class="post-continue-container">
-					<a class="continue-reading-link" href="/profilowanie-wydajnosci-aplikacji-c/"><span>Read more</span> <em class="screen-reader-text">"profilowanie wydajności aplikacji c++"</em> <i class="icon-continue-reading"></i></a><span class="comments-link"><i class="icon-comments icon-metas" title="Komentarze"></i><a href="/profilowanie-wydajnosci-aplikacji-c/#respond" itemprop="discussionURL">Dodaj komentarz</a></span>				</footer>
-
-			
-		
-	<span class="schema-publisher" itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
-         <span itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-           <meta itemprop="url" content="https://craftsoft.eu">
-         </span>
-         <meta itemprop="name" content="DevOps tech blog">
-    </span>
-<link itemprop="mainEntityOfPage" href="/profilowanie-wydajnosci-aplikacji-c/">	</div>
-<!-- .article-inner -->
-</article><!-- #post-173 -->
-
-			</div> <!-- content-masonry -->
-			
-	<nav class="navigation pagination" role="navigation" aria-label="Wpisy">
-		<h2 class="screen-reader-text">Nawigacja po wpisach</h2>
-		<div class="nav-links">
-<span aria-current="page" class="page-numbers current">1</span>
-<a class="page-numbers" href="/page/2/">2</a>
-<a class="page-numbers" href="/page/3/">3</a>
-<a class="page-numbers" href="/page/4/">4</a>
-<a class="next page-numbers" href="/page/2/"><i class="icon-pagination-right"></i></a>
-</div>
-	</nav>
 		
 			</main><!-- #main -->
 
@@ -1106,15 +968,7 @@ kbd {
         <li><a href="https://api.github.com/users/kathog/followers" target="_top"><strong>1</strong>Followers</a></li>
     </ul>
     <div class="footer"></div>
-</div></section><section id="custom_post_widget-2" class="widget-container widget_custom_post_widget">
-<div class="wp-block-jetpack-markdown">
-<p><img src="https://github-readme-stats.vercel.app/api?username=kathog&amp;include_all_commits=true&amp;count_private=true&amp;show_icons=true&amp;hide_title=true" alt="kathog's GitHub stats"></p>
-</div>
-
-
-
-<p></p>
-</section>
+</div></section>
 	</aside>
 </div>
 <!-- #container -->
@@ -1132,8 +986,8 @@ kbd {
 	<footer id="footer" class="cryout" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
 				<div id="footer-inside">
 			<nav class="footermenu"><ul id="menu-home" class="menu">
-<li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-507">
-<a href="/" aria-current="page">Strona główna</a><span class="sep">-</span>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-507">
+<a href="/">Strona główna</a><span class="sep">-</span>
 </li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-508">
 <a href="/o-mnie/">O mnie</a><span class="sep">-</span>
@@ -1153,6 +1007,12 @@ var ce4wp_form_submit_data = {"siteUrl":"https:\/\/craftsoft.eu","url":"https:\/
 <script type="text/javascript" src="/wp-content/plugins/creative-mail-by-constant-contact/assets/js/block/submit.js?ver=1634143986" id="ce4wp_form_submit-js"></script>
 <script type="text/javascript" src="/wp-content/plugins/github-shortcode/jquery.githubRepoWidget.min.js?ver=1.0" id="githubRepoWidget-js"></script>
 <script type="text/javascript" src="https://c0.wp.com/p/jetpack/10.2/_inc/build/photon/photon.min.js" id="jetpack-photon-js"></script>
+<script type="text/javascript" src="/wp-content/plugins/wp-codemirror-block/vendor/codemirror/lib/codemirror.min.js?ver=5.40.5" id="codemirror-js"></script>
+<script type="text/javascript" id="codemirror-autoload-assets-js-before">
+var wpcm = {"plugin_url":"https://craftsoft.eu/wp-content/plugins/wp-codemirror-block","assets":[],"panelOptions":{"showPanel":true,"languageLabel":false,"runButton":false,"fullScreenButton":true,"copyButton":true},"view":"public"}
+</script>
+<script type="text/javascript" src="/wp-content/plugins/wp-codemirror-block/assets/js/autoLoadAssets.min.js?ver=1603638933" id="codemirror-autoload-assets-js"></script>
+<script type="text/javascript" src="/wp-content/plugins/wp-codemirror-block/assets/js/init.min.js?ver=1603638933" id="codemirror-init-js"></script>
 <script type="text/javascript" src="/wp-content/plugins/wp-github//js/prism.js?ver=1.0" id="highlight-js"></script>
 <script type="text/javascript" src="/wp-content/plugins/enlighter/cache/enlighterjs.min.js?ver=jfULUD+B/p1vazZ" id="enlighterjs-js"></script>
 <script type="text/javascript" id="enlighterjs-js-after">
@@ -1168,11 +1028,12 @@ var cryout_theme_settings = {"masonry":"1","rtl":"","magazine":"2","fitvids":"1"
 <script type="text/javascript" src="https://c0.wp.com/c/5.8.1/wp-includes/js/imagesloaded.min.js" id="imagesloaded-js"></script>
 <script type="text/javascript" defer src="https://c0.wp.com/c/5.8.1/wp-includes/js/masonry.min.js" id="masonry-js"></script>
 <script type="text/javascript" defer src="https://c0.wp.com/c/5.8.1/wp-includes/js/jquery/jquery.masonry.min.js" id="jquery-masonry-js"></script>
+<script type="text/javascript" src="https://c0.wp.com/c/5.8.1/wp-includes/js/comment-reply.min.js" id="comment-reply-js"></script>
 <script src="https://stats.wp.com/e-202142.js" defer></script>
 <script>
 	_stq = window._stq || [];
-	_stq.push([ 'view', {v:'ext',j:'1:10.2',blog:'192367061',post:'0',tz:'2',srv:'craftsoft.eu'} ]);
-	_stq.push([ 'clickTrackerInit', '192367061', '0' ]);
+	_stq.push([ 'view', {v:'ext',j:'1:10.2',blog:'192367061',post:'797',tz:'2',srv:'craftsoft.eu'} ]);
+	_stq.push([ 'clickTrackerInit', '192367061', '797' ]);
 </script>
 <script>jQuery(function(){
 		var form = jQuery('form'),
